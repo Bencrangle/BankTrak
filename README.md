@@ -9,5 +9,4 @@ A full-stack application for tracking your personal finances and helping you fig
 - NestJS
 - PostgreSQL
 - Prisma
-- Docker
 - Azure
