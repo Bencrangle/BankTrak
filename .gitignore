@@ -1,0 +1,23 @@
+# Dependencies
+**/node_modules/
+
+# Environment variables and secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Build output
+**/dist/
+**/build/
+**/.next/
+**/out/
+**/coverage/
+
+# TypeScript
+**/*.tsbuildinfo
+
+# Operating system
+.DS_Store
+
+# Logs
+*.log
