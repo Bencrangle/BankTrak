@@ -13,12 +13,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model User {
   id           String   @id @default(cuid())
+  auth0Id      String   @unique
   email        String   @unique
-  passwordHash String
-  firstName    String
-  lastName     String
+  firstName    String?
+  lastNamee    String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  transactions Transaction[]
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+model Transaction {
+  id           String   @id @default(cuid())
+  description  String 
+  amount       Decimal  @db.Decimal(12, 2)
+  type         TransactionType
+  category     String
+  date         DateTime
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  @@index( [userId, date])
 }
