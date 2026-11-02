@@ -1,3 +1,7 @@
+import { auth0 } from "@/lib/auth0";
+
+export const instant = false;
+
 export default function DashboardPage() {
     return (
         <>
