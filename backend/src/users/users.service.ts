@@ -10,6 +10,12 @@ type Auth0User = {
 @Injectable()
 export class UsersService {
     constructor (private readonly prisma: PrismaService) {}
+    async findByAuth0Id(auth0Id: string) {
+        return this.prisma.user.findUnique({
+            where: { auth0Id: auth0Id }
+        })
+    }
+    
     async findOrCreateUser(auth0User: Auth0User) {
         const nameParts = auth0User.name?.split(' ') ?? [];
         const firstName = nameParts[0] ?? '';
